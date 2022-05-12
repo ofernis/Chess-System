@@ -1,0 +1,17 @@
+chess: chessSystemTestsExample.o chess.o tournament.o game.o player.o
+	gcc chessSystemTestsExample.o chess.o tournament.o game.o player.o libmap.a -o chess
+
+chessSystemTestsExample.o: chessSystemTestsExample.c chessSystem.h test_utilities.h
+	gcc -std=c99 -c chessSystemTestsExample.c
+
+chess.o: chessSystem.c chessSystem.h tournament.h game.h player.h map.h
+	gcc -std=c99 -c chessSystem.c
+
+tournament.o: tournament.c chessSystem.h tournament.h game.h player.h map.h
+	gcc -std=c99 -c tournament.c
+
+game.o: game.c chessSystem.h game.h player.h map.h
+	gcc -std=c99 -c game.c
+
+player.o: player.c chessSystem.h player.h map.h
+	gcc -std=c99 -c player.c
